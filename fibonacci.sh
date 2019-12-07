@@ -1,20 +1,26 @@
-echo "enter number to find fibonacci series:"
-read num
-i=0
-j=1
-for((c=0;c<=num;c++))
-do 
-if [ $c<=1 ] ; then
-next=$i
-echo "$next"
+
+fibonacci()
+{
+num= $1
+a=0
+b=1
+fibo=0
+if [ $num -eq 1 ] ;then
+echo "$a"
 else
-next=$(($i+$j))
-i=$j
-j=$next
-echo "$next"
-fi
+echo "$a"
+echo "$b"
+for i in `seq 1 1 $num`
+do 
+fibo=$(( $a+$b ))
+a=$b 
+b=$fibo
+echo "$fibo"
 done
-echo "$next"
+fi
+}
 
+echo "enter number to find fibonacci:"
+read num
 
-
+fibonacci $num
